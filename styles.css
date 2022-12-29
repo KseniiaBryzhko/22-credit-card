@@ -1,0 +1,258 @@
+/* підключення шрифтів */
+@import url("https://fonts.googleapis.com/css2?family=Beth+Ellen&family=Courier+Prime:wght@700&family=Roboto:wght@400;700&display=swap");
+
+/* основний контейнер */
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: #fbe6db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier Prime", monospace;
+}
+
+/* налаштування основного контейнера */
+.wrapper {
+  position: relative;
+  margin-top: 20px;
+}
+
+/* основний контейнер картки */
+.credit-card__wrapper {
+  position: relative;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-334px);
+  z-index: 10;
+}
+
+/* перегортання картка */
+.credit-card__wrapper.flip .credit-card__inner {
+  transform: rotateY(180deg);
+}
+
+/* внутрішній контейнер для двох боків картки */
+.credit-card__inner {
+  position: relative;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* загальні налаштування картки */
+.credit-card--front,
+.credit-card--back {
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 668px 413px;
+  width: 668px;
+  height: 413px;
+  margin-bottom: -200px;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* початкова трансформація та вибір дизайну картки */
+.credit-card--back {
+  transform: rotateY(180deg) translateX(-334px);
+}
+
+.visa .credit-card--front {
+  background-image: url("./images/cc__visa--front.png");
+}
+
+.visa .credit-card--back {
+  background-image: url("./images/cc__visa--back.png");
+}
+
+.mastercard .credit-card--front {
+  background-image: url("./images/cc__mastercard--front.png");
+}
+
+.mastercard .credit-card--back {
+  background-image: url("./images/cc__mastercard--back.png");
+}
+
+.discover .credit-card--front {
+  background-image: url("./images/cc__discover--front.png");
+}
+
+.discover .credit-card--back {
+  background-image: url("./images/cc__discover--back.png");
+}
+
+.american .credit-card--front {
+  background-image: url("./images/cc__american--front.png");
+}
+
+.american .credit-card--back {
+  background-image: url("./images/cc__american--back.png");
+}
+
+/* номер картки */
+.card-number {
+  position: absolute;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 47px;
+  width: 575px;
+  top: 184px;
+  left: 118px;
+}
+
+/* власник картки */
+.card-holder {
+  width: 575px;
+  position: absolute;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 34px;
+  text-transform: uppercase;
+  left: 118px;
+  top: 280px;
+}
+
+/* дата чинності картки */
+.expiration-date {
+  width: 575px;
+  position: absolute;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 34px;
+  text-transform: uppercase;
+  left: 355px;
+  top: 246px;
+}
+
+/* тіні */
+.shadow {
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.65);
+  z-index: -1;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ефект об'ємних цифр */
+.emboss {
+  z-index: 5;
+  position: absolute;
+  background: linear-gradient(
+    180deg,
+    #ffffff 15.34%,
+    #dbdbdb 21.24%,
+    #ffffff 37.13%,
+    rgba(188, 227, 217, 0.68) 48.94%,
+    rgba(255, 255, 255, 0.830204) 58.93%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 100%;
+  height: 50px;
+}
+
+/* підпис */
+.signature {
+  font-family: "Beth Ellen", cursive;
+  font-size: 32px;
+  position: absolute;
+  left: 105px;
+  top: 142px;
+}
+
+/* код */
+.cvv {
+  position: absolute;
+  right: 110px;
+  top: 170px;
+}
+
+/* загальні налаштування форми */
+.form {
+  background: white;
+  border-radius: 30px;
+  padding: 200px 60px 60px 60px;
+  box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.25), 0px 0px 95px #f5c7bd;
+  position: relative;
+  z-index: 1;
+  width: 890px;
+}
+
+/* рядок форми */
+.row {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 35px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* окремі блоки з полями */
+.field {
+  flex: 1;
+}
+
+/* підписи полів форми */
+label {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* налаштування полів форми */
+input[type="text"],
+input[type="number"],
+select {
+  font-family: "Roboto", sans-serif;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  height: 65px;
+  padding: 0 30px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+/* кнопка надсилання даних */
+button {
+  background: #7d193e;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  padding: 20px 0;
+  box-sizing: border-box;
+  height: 65px;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* блок з полем списку */
+.field__option {
+  display: flex;
+  gap: 20px;
+}
+
+.option__wrapper {
+  flex: 2;
+}
+
+/* кастомна стрілка списку */
+select {
+  background: url("./images/arrow.svg") 95% center no-repeat;
+  appearance: none;
+}
